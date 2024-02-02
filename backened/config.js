@@ -1,3 +1,1 @@
-module.exports = {
-    jwtSecret : 'Secret'
-}
+
