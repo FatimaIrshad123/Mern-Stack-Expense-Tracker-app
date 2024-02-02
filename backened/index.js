@@ -7,7 +7,6 @@ const { Admin, Income,Expense } = require('../backened/db/index');
 const {adminMiddleware} = require('./middleware/admin')
 const jwtSecret = 'Fatima'
 app.use(cors())
-// Middleware for parsing request bodies
 app.use(bodyParser.json());
 
 app.post('/signup', async(req, res) => {
@@ -47,11 +46,9 @@ app.post('/signin', async(req, res) => {
     }
 });
 
-
 app.post('/income', adminMiddleware,async (req, res) => {
     let title = req.body.title    
     let income = req.body.income;
-
     const newIncome = await Income.create({
             title,
             income
@@ -67,7 +64,6 @@ app.get('/income', adminMiddleware,async (req, res) => {
 app.post('/expense', adminMiddleware,async (req, res) => {
         let expensetitle = req.body.expensetitle    
         let expense = req.body.expense;
-
         const newExpense = await Expense.create({
                 expensetitle,
                 expense
@@ -86,7 +82,6 @@ app.get('/me',adminMiddleware,async(req,res)=> {
         })
     })
     
-
 const PORT = 3000;
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
