@@ -7,7 +7,6 @@ import { Navigate } from "react-router-dom";
 export default function Signup() {
     const [username,setUsername] = useState('')
     const [password,setpassword] = useState('')
-
     return (
       <div>
         <center>
@@ -36,36 +35,31 @@ export default function Signup() {
                 value={password}
               onChange={e => setpassword(e.target.value)}/>
           <br /><br />
-          
           <Button 
               variant="contained" 
               size={"larger"} 
               onClick={() => {
-                
                 function callback2(data){
                   localStorage.setItem('token',data.token)
                   alert(data.msg);
                 }
-
                 function callback1(res){
                   res.json().then(callback2)
                 }
                 fetch('http://localhost:3000/signup',{method:'POST',
-              body:JSON.stringify({
-                username,
-                password
-              }),
-              headers: {
-                'Content-Type': 'application/json'
-              }
-            }).then(callback1)
-            }}>
+                  body:JSON.stringify({
+                    username,
+                    password
+                  }),
+                  headers: {
+                    'Content-Type': 'application/json'
+                  }
+                }).then(callback1)
+                }}>
               <Navigate to={'/expensetracker'}/>Sign up
                 </Button>
-        </Card>
-        </center>
+            </Card>
+         </center>
       </div>
     )
   }
-  
- 
