@@ -13,9 +13,8 @@ export default function Login() {
         <center>
           <div style={{paddingTop:150,paddingBottom: 25}}>
             <Typography variant={"h4"}> Welcome Back</Typography>
-            </div>
-            </center>
-
+          </div>
+        </center>
         <center> 
         <Card variant="outlined" style = {{border: '2px solid black',width:400,padding:20}}>
           <TextField 
@@ -43,32 +42,25 @@ export default function Login() {
                 function callback2(data){
                   localStorage.setItem('token',data.token)
                   setToken(data.token)
-
-                  if (data.token){
-                    
-                  }else{
+                  if (data.token){}else{
                     alert('Invalid email or password')
-                  }
-              console.log('token ' ,token)    
+                  } 
                 }
-
                 function callback1(res){
                   res.json().then(callback2)
                 }
                 fetch('http://localhost:3000/signin',{method:'POST',
-              body:JSON.stringify({
-                username,
-                password
-              }),
-              headers: {
-                'Content-Type': 'application/json'
-              }}).then(callback1)
-            }}>
+                body:JSON.stringify({
+                  username,
+                  password
+                }),
+                headers: {
+                  'Content-Type': 'application/json'
+                }}).then(callback1)
+              }}>
                {token ? <Navigate to={'/expensetracker'}/> : ''}Signin</Button>
-        </Card>
+          </Card>
         </center>
       </div>
     )
   }
-  
- 
