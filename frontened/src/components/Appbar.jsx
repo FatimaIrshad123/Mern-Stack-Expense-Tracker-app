@@ -11,7 +11,6 @@ export default function Appbar(){
                 setuser(data.user.username)
             }
           }
-
           function callback1(res){
             res.json().then(callback2)
           }
@@ -19,7 +18,6 @@ export default function Appbar(){
             headers:{'Authorization' : localStorage.getItem('token')}
         }).then(callback1)
     },[])
-
     if (user){
         return (
             <div style={{display:'flex',justifyContent:'space-between'}}>
@@ -34,9 +32,7 @@ export default function Appbar(){
                     onClick={() => localStorage.clear('token')}>Logout</Link></Button>
                 </div>
             </div>
-        )
-    }       
-    
+        )}      
     return (
         <div style={{display:'flex',justifyContent:'space-between'}}>
             <div>
